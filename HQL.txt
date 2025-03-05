@@ -1,0 +1,42 @@
+Demo1
+Query query = s.createQuery("from Student s");
+		 List<Student> studlist = query.list();
+		 for(Student stud:studlist) {
+			 System.out.println(stud);
+		 }
+----------------------------------------------------------------------------
+Demo2
+Query query = s.createQuery("select rollno, studname from Student s");
+		 List<Object> studlist = query.list();
+		 for(Object obj:studlist){
+		    	Object ar[]= (Object [])obj;
+		    	System.out.println(ar[0]+" "+ar[1]);
+		    }   
+-----------------------------------------------------------------------
+Demo3
+	 Query query = s.createQuery("from Student s where s.marks > :mk");
+		 query.setParameter("mk", 90.0f);
+		 List<Student> studlist = query.list();
+		 for(Student stud:studlist) {
+			 System.out.println(stud);
+		 }
+--------------------------------------------------------------------------
+Demo4
+ Query query = s.createQuery("update Student s set s.studname= ? where s.rollno = ?");
+		 query.setParameter(0, "QQQ");
+		 query.setParameter(1, 2);
+		 int i = query.executeUpdate();
+		 System.out.println(i+" Record updated");
+		 t.commit();
+		 query = s.createQuery("from Student s");
+		 List<Student> studlist = query.list();
+		 for(Student stud:studlist) {
+			 System.out.println(stud);
+		 }
+--------------------------------------------------------------------------
+Demo5
+ Criteria crt = s.createCriteria(Student.class);
+		 Criterion cr = Restrictions.eq("rollno", 2);
+		 crt.add(cr);
+		 Student stud = (Student) crt.uniqueResult();
+		 System.out.println(stud);
