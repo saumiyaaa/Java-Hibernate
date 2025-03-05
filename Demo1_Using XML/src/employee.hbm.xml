@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class name="com.demo.bean.Employee" table="Employee2501">
+        <id name="empid" column="eid" length="5"> <!--  Primary Key  -->          
+        </id>
+        <property name="ename" not-null="true" column="Name" type="java.lang.String" length="15">
+            <!-- <column name="NAME" /> -->
+        </property>
+        <property name="esal" not-null="true" column="empsal" type="java.lang.Double" length="7">
+           <!-- <column name="empsal" /> --> 
+        </property>  
+       
+    </class>
+</hibernate-mapping>
